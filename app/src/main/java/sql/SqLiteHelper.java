@@ -17,7 +17,7 @@ public class SqLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME="APPS_TABLE";
     public static final String COLUMN_ID= BaseColumns._ID;
     public static final String COLUMN_APP_NAME = "APP_NAME";
-    private static final String COLUMN_ACTUALIZADO = "ACTUALIZADO";
+    public static final String COLUMN_ACTUALIZADO = "ACTUALIZADO";
 
     private static final String CREATE_TABLE_APPS = "create table " + TABLE_NAME +
             " ( " + COLUMN_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -31,7 +31,7 @@ public class SqLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(CREATE_TABLE_APPS);
     }
 
     @Override
