@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.provider.SyncStateContract;
+
 
 /**
  * Created by Administrator on 28/06/2016.
@@ -17,11 +17,17 @@ public class SqLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME="APPS_TABLE";
     public static final String COLUMN_ID= BaseColumns._ID;
     public static final String COLUMN_APP_NAME = "APP_NAME";
+    public static final String COLUMN_APP_DESCRIPCION = "APP_DESCRIPCION";
+    public static final String COLUMN_APP_DESARROLLADOR = "APP_DESARROLLADOR";
+    public static final String COLUMN_APP_RESOURCE = "APP_RESOURCE";
     public static final String COLUMN_ACTUALIZADO = "ACTUALIZADO";
 
     private static final String CREATE_TABLE_APPS = "create table " + TABLE_NAME +
             " ( " + COLUMN_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_APP_NAME + " text not null, " +
+            COLUMN_APP_DESCRIPCION + " text not null, " +
+            COLUMN_APP_DESARROLLADOR + " text not null, " +
+            COLUMN_APP_RESOURCE + " integer , " +
             COLUMN_ACTUALIZADO + " integer)";
 
     public SqLiteHelper(Context context) {

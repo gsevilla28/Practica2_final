@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Practica Final</string>
+    <string name="btnMain">Ir al detalle...</string>
+    <string name="txtBienvenida">Bienvenido</string>
+    <!-- layout detail-->
+    <string name="txtDetalle">Detalle de apps</string>
+
+    <!-- class detail apps activity-->
+    <string name="TitleBar">Apps en el dispositivo</string>
+    <string name="hintAdd">Add apk</string>
+    <string name="btnAgregar">Add app</string>
+    <string name="txtSinApps">there are not apps installed</string>
+    <!-- add item activity-->
+    <string name="hintDesarrollador">Developer</string>
+    <string name="hintDescripcion">Description</string>
+    <string name="hintApkName">Apk Name</string>
+    <string name="btnSave">Save</string>
+    <string name="checktext">Instalada</string>
+    <string name="det">Add Apks Details</string>
 </resources>
