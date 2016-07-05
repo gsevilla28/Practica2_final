@@ -3,11 +3,12 @@ package idmexico.com.mx.practica2_final;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import idmexico.com.mx.practica2_final.Models.ModelApks;
 import sql.DataSource;
@@ -70,10 +71,18 @@ public class AddItem_Activity extends AppCompatActivity implements View.OnClickL
         String descrip = txtdescription.getText().toString();
         String desarollador = txtDesarrollador.getText().toString();
 
-        Boolean isVal = false;
+        if (!TextUtils.isEmpty(apkname) && !TextUtils.isEmpty(descrip) && !TextUtils.isEmpty(desarollador)) {
 
-        DataSource dataSource = new DataSource(getApplicationContext());
-        dataSource.SaveApk(new ModelApks(0,apkname,descrip,desarollador,isVal?R.drawable.ic_action_action_3d_rotation:R.drawable.ic_action_action_supervisor_account,0));
-        isVal=!isVal;
+            Boolean isVal = false;
+            DataSource dataSource = new DataSource(getApplicationContext());
+            dataSource.SaveApk(new ModelApks(0, apkname, descrip, desarollador, isVal ? R.drawable.ic_action_action_3d_rotation : R.drawable.ic_action_action_supervisor_account, 0));
+            isVal = !isVal;
+            setResult(RESULT_OK);
+            finish();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Ningun Campo debe estar vacio", Toast.LENGTH_SHORT).show();
+        }
+            
     }
 }

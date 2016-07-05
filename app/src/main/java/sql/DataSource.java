@@ -40,8 +40,8 @@ public class DataSource {
     public void SaveApk(ModelApks modelApks){
         //contentValues.put(SqLiteHelper.COLUMN_ID, modelApks.getId());
         contentValues.put(SqLiteHelper.COLUMN_APP_NAME,modelApks.getApkName());
-        contentValues.put(SqLiteHelper.COLUMN_APP_DESCRIPCION,modelApks.getDescripcion());
-        contentValues.put(SqLiteHelper.COLUMN_APP_DESARROLLADOR,modelApks.getDesarrollador());
+        contentValues.put(SqLiteHelper.COLUMN_APP_DESCRIPCION, modelApks.getDescripcion());
+        contentValues.put(SqLiteHelper.COLUMN_APP_DESARROLLADOR,"Desarrollado por: "+ modelApks.getDesarrollador());
         contentValues.put(SqLiteHelper.COLUMN_APP_RESOURCE,modelApks.getResourceId());
         contentValues.put(SqLiteHelper.COLUMN_ACTUALIZADO,modelApks.getActualizado());
 

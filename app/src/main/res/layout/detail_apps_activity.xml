@@ -14,15 +14,14 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/txtNohayAPK"
             android:textSize="@dimen/sizeText"
             android:text="@string/txtSinApps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <ListView
-            android:layout_marginTop="7dp"
-            android:id="@+id/ListApks"
+            android:id="@+id/listitem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ListView>
+            android:layout_height="wrap_content"></ListView>
     </LinearLayout>
 </LinearLayout>
