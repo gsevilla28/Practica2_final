@@ -25,6 +25,9 @@ public class DataSource {
 
     public void UpdateApk(ModelApks modelApks){
         contentValues.put(SqLiteHelper.COLUMN_ACTUALIZADO,modelApks.getActualizado()); /*en el content se colocan los valores que se van a actualizar*/
+        contentValues.put(SqLiteHelper.COLUMN_APP_NAME,modelApks.getApkName());
+        contentValues.put(SqLiteHelper.COLUMN_APP_DESARROLLADOR,modelApks.getDesarrollador());
+        contentValues.put(SqLiteHelper.COLUMN_APP_DESCRIPCION,modelApks.getDescripcion());
 
         sql.update(SqLiteHelper.TABLE_NAME,contentValues,SqLiteHelper.COLUMN_ID + "=?",new String[]{String.valueOf(modelApks.getId())});
         contentValues.clear();

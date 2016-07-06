@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
-    style="@style/AppTheme"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:elevation="16dp"
     app:titleTextColor="#FFFFFF"
     android:background="?colorPrimary"

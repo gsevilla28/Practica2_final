@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import idmexico.com.mx.practica2_final.Models.ModelApks;
 import sql.DataSource;
 
@@ -41,7 +43,6 @@ public class AddItem_Activity extends AppCompatActivity implements View.OnClickL
 
         findViewById(R.id.btnSave).setOnClickListener(this);
 
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,19 +71,38 @@ public class AddItem_Activity extends AppCompatActivity implements View.OnClickL
         String apkname = txtapkname.getText().toString();
         String descrip = txtdescription.getText().toString();
         String desarollador = txtDesarrollador.getText().toString();
+        int image_1 = R.drawable.ic_action_action_3d_rotation;
+        int image_2 = R.drawable.ic_action_notification_adb;
+        int image_3 = R.mipmap.ic_launcher;
+        int image_4 = R.drawable.ic_action_action_supervisor_account;
+
+        Random r = new Random();
+        int imageAPK = r.nextInt(4-1 +1) + 1;
+
+        switch (imageAPK){
+            case 1:
+                imageAPK = image_1;
+                break;
+            case 2:
+                imageAPK = image_2;
+                break;
+            case 3:
+                imageAPK = image_3;
+                break;
+            case 4:
+                imageAPK = image_4;
+                break;
+        }
+
 
         if (!TextUtils.isEmpty(apkname) && !TextUtils.isEmpty(descrip) && !TextUtils.isEmpty(desarollador)) {
 
-            Boolean isVal = false;
             DataSource dataSource = new DataSource(getApplicationContext());
-            dataSource.SaveApk(new ModelApks(0, apkname, descrip, desarollador, isVal ? R.drawable.ic_action_action_3d_rotation : R.drawable.ic_action_action_supervisor_account, 0));
-            isVal = !isVal;
+            dataSource.SaveApk(new ModelApks(0, apkname, descrip, desarollador, imageAPK, 0));
             setResult(RESULT_OK);
             finish();
         }
-        else{
-            Toast.makeText(getApplicationContext(), "Ningun Campo debe estar vacio", Toast.LENGTH_SHORT).show();
-        }
+        else{ Toast.makeText(getApplicationContext(), "Ningun Campo debe estar vacio", Toast.LENGTH_SHORT).show(); }
             
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/apkName_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/desarrolla_Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/descrip_Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <CheckBox
+        android:text="Actualizada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+    <Button
+        android:id="@+id/btnSave_Edit"
+        android:layout_gravity="center"
+        android:text="Guardar Cambios"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

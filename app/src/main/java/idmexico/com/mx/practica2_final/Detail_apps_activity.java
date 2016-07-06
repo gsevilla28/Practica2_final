@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import idmexico.com.mx.practica2_final.Adapters.AdapterItemList;
 import idmexico.com.mx.practica2_final.Models.ModelApks;
-import idmexico.com.mx.practica2_final.R;
 import sql.DataSource;
 
 /**
@@ -79,7 +78,8 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (REQUEST_CODE_SECOND_ACTIVITY==requestCode && resultCode==RESULT_OK){
-
+            arrayList = (ArrayList<ModelApks>) dataSource.getAllApks();
+            list.setAdapter(new AdapterItemList(getApplicationContext(), arrayList));
         }
         else
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,6 +97,7 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
         AdapterItemList adapterItemList = (AdapterItemList) parent.getAdapter();
         final ModelApks modelApks = adapterItemList.getItem(position);
         Intent intent = new Intent(getApplicationContext(),Detail_apk_simple.class);
+        intent.putExtra("idapk",modelApks.getId());
         intent.putExtra("apkname",modelApks.getApkName());
         intent.putExtra("desarollador",modelApks.getDesarrollador());
         intent.putExtra("descripcion",modelApks.getDescripcion());
@@ -105,13 +106,4 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        arrayList = (ArrayList<ModelApks>) dataSource.getAllApks();
-        list.setAdapter(new AdapterItemList(getApplicationContext(), dataSource.getAllApks()));
-
-
-    }
 }
