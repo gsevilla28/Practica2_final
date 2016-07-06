@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class Detail_apk_simple extends AppCompatActivity implements View.OnClick
         String desa = intent.getExtras().getString("desarollador");
         String desc = intent.getExtras().getString("descripcion");
         int iResource = intent.getExtras().getInt("imagen");
+        int instalada= intent.getExtras().getInt("instalada");
 
 
         txtName = (TextView) findViewById(R.id.txtName_detail_simple);
@@ -54,6 +56,10 @@ public class Detail_apk_simple extends AppCompatActivity implements View.OnClick
 
         txtDesc = (TextView) findViewById(R.id.txtDescripcion_detail_simple);
         txtDesc.setText(desc);
+
+        CheckBox checkBox = (CheckBox) findViewById(R.id.check_apksiemple);
+        checkBox.setChecked(instalada==1);
+        checkBox.setEnabled(false);
 
         ImageView imageView = (ImageView) findViewById(R.id.img_detail_simple);
         imageView.setImageResource(iResource);
@@ -97,6 +103,7 @@ public class Detail_apk_simple extends AppCompatActivity implements View.OnClick
                         startService( new Intent(getApplicationContext(), ServiceNotifications.class));
                         int borrado = dataSource.DeleteApk((idapk));
                         Toast.makeText(getApplicationContext(), "Desinstalando aplicacion", Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_OK);
                         finish();
                     }
                 }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -128,7 +135,7 @@ public class Detail_apk_simple extends AppCompatActivity implements View.OnClick
         String Desarrolla = txtDesa.getText().toString();
         String Descri = txtDesc.getText().toString();
 
-        FragmentEditApp f = FragmentEditApp.NuevaInstancia(idapk,name,Desarrolla,Descri);
+        FragmentEditApp f = FragmentEditApp.NuevaInstancia(idapk,name,Desarrolla,Descri,1);
         getFragmentManager().beginTransaction().replace(R.id.Fholder, f).commit();
     }
 

@@ -17,7 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <CheckBox
-        android:text="Actualizada"
+        
+        android:id="@+id/chek_edit"
+        android:text="Instalada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Space

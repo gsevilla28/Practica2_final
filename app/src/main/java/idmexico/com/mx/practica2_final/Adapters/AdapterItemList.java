@@ -37,6 +37,7 @@ public class AdapterItemList extends ArrayAdapter<ModelApks> {
 
             TextView txtApkName = (TextView) convertView.findViewById(R.id.txtrow_apkName);
             TextView txtDesarrollador = (TextView) convertView.findViewById(R.id.txtrow_desarrollador);
+            TextView txtInstalada = (TextView) convertView.findViewById(R.id.txt_instalada);
             ImageView imgSource = (ImageView) convertView.findViewById(R.id.row_img);
 
             ModelApks modelApks = getItem(position);
@@ -45,6 +46,8 @@ public class AdapterItemList extends ArrayAdapter<ModelApks> {
 
             txtApkName.setText(modelApks.getApkName());
             txtDesarrollador.setText(modelApks.getDesarrollador());
+            txtInstalada.setText(modelApks.getActualizado() == 0 ? "Installed":"Updated");
+
             imgSource.setImageResource(modelApks.getResourceId());
 
 

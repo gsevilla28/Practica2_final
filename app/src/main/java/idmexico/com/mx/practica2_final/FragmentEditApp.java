@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,12 +27,13 @@ public class FragmentEditApp extends Fragment  {
     private EditText apkName,EditDesa,EditDescrip;
     DataSource dataSource;
 
-    public static FragmentEditApp NuevaInstancia(int idapk, String apkName, String Desarrollador, String Descrip){
+    public static FragmentEditApp NuevaInstancia(int idapk, String apkName, String Desarrollador, String Descrip,int instalada){
         FragmentEditApp f = new FragmentEditApp();
         Bundle b  = new Bundle();
         b.putInt("idapk",idapk);
         b.putString("apkName_F", apkName);
         b.putString("Desarrollador_D",Desarrollador);
+        b.putInt("instalada",instalada);
         b.putString("Descrip_F",Descrip);
         f.setArguments(b);
 
@@ -55,6 +57,11 @@ public class FragmentEditApp extends Fragment  {
 
         EditDescrip = (EditText) view.findViewById(R.id.descrip_Edit);
         EditDescrip.setText(b.getString("Descrip_F"));
+
+        CheckBox check = (CheckBox) view.findViewById(R.id.chek_edit);
+        check.setChecked(b.getInt("instalada")==1);
+        check.setEnabled(false);
+
 
         dataSource = new DataSource(getActivity());
 

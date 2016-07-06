@@ -23,10 +23,12 @@ import sql.DataSource;
 public class Detail_apps_activity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private static final int REQUEST_CODE_SECOND_ACTIVITY = 1;
+    //private static final int REQUEST_CODE_ACTIVITY = 2;
     private DataSource dataSource;
     private ListView list;
 
     private ArrayList<ModelApks> arrayList;
+    private TextView txtnohayapk;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.detail_apps_activity);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView txtnohayapk = (TextView) findViewById(R.id.txtNohayAPK);
+        txtnohayapk = (TextView) findViewById(R.id.txtNohayAPK);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.ic_action_notification_adb);
@@ -49,7 +51,7 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
 
         if (arrayList.size()>0) {
             txtnohayapk.setText("Lista de aplicaciones");
-            list.setAdapter(new AdapterItemList(getApplicationContext(), dataSource.getAllApks()));
+            list.setAdapter(new AdapterItemList(getApplicationContext(), arrayList));
         }
         list.setOnItemClickListener(this);
 
@@ -78,6 +80,7 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (REQUEST_CODE_SECOND_ACTIVITY==requestCode && resultCode==RESULT_OK){
+            txtnohayapk.setText("Lista de aplicaciones");
             arrayList = (ArrayList<ModelApks>) dataSource.getAllApks();
             list.setAdapter(new AdapterItemList(getApplicationContext(), arrayList));
         }
@@ -102,7 +105,9 @@ public class Detail_apps_activity extends AppCompatActivity implements AdapterVi
         intent.putExtra("desarollador",modelApks.getDesarrollador());
         intent.putExtra("descripcion",modelApks.getDescripcion());
         intent.putExtra("imagen",modelApks.getResourceId());
-        startActivity(intent);
+        intent.putExtra("instalada",modelApks.getActualizado());
+        //startActivity(intent);
+        startActivityForResult(intent,REQUEST_CODE_SECOND_ACTIVITY);
 
     }
 
